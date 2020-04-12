@@ -1,0 +1,29 @@
+plugins {
+    id 'com.bmuschko.docker-spring-boot-application' version '6.1.3'
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'com.bmuschko.docker-spring-boot-application'
+
+docker {
+    springBootApplication {
+        baseImage = 'openjdk:13-alpine'
+        images = ['spring-boot-docker:1.0']
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = JavaVersion.VERSION_13
+targetCompatibility = JavaVersion.VERSION_13
+
+dependencies {
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.2.4.RELEASE"))
+    compile("org.springframework.boot:spring-boot-starter-web") 
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+

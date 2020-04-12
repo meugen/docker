@@ -1,0 +1,20 @@
+allprojects  {
+  group = 'it.discovery'
+}
+
+subprojects {
+  apply plugin: 'java'
+  sourceCompatibility = 1.13
+  targetCompatibility = 1.13
+
+  repositories {
+      jcenter()
+  } 
+
+  dependencies {
+     implementation(platform("org.springframework.boot:spring-boot-dependencies:2.2.4.RELEASE"))
+     compile("org.springframework.boot:spring-boot-starter-web")
+  }
+
+}
+
